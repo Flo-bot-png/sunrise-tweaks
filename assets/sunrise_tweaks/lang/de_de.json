@@ -1,0 +1,20 @@
+{
+  "key.sunrise_tweaks.toggle_autoclicker": "Toggle autoclicker",
+  "sunrise_tweaks.category.gui": "§l▌ GUI",
+  "sunrise_tweaks.category.overlays": "§l▌ Overlays",
+  "sunrise_tweaks.category.automation": "§l▌ Automation",
+  "key.sunrise_tweaks.open_gui": "Open click menu",
+  "key.sunrise_tweaks.toggle_autotool": "Toggle Auto Tool",
+  "sunrise_tweaks.setting.menu_key": "Click menu key",
+  "sunrise_tweaks.setting.menu_key.tooltip": "Opens the Sunrise Tweaks menu with all settings. Can also be changed in Options → Controls.",
+  "sunrise_tweaks.menu_key.controls": "As in Controls",
+  "key.sunrise_tweaks.toggle_light_overlay": "Toggle Light Overlay",
+  "key.sunrise_tweaks.toggle_no_darkness": "Toggle No Darkness",
+  "key.sunrise_tweaks.toggle_fullbright": "Toggle Fullbright",
+  "key.sunrise_tweaks.toggle_no_pumpkin": "Toggle No Pumpkin",
+  "key.sunrise_tweaks.toggle_weather": "Toggle Weather Changer",
+  "key.sunrise_tweaks.toggle_autoeat": "Toggle Auto Eat",
+  "key.sunrise_tweaks.freelook": "Free Look",
+  "key.sunrise_tweaks.toggle_easybridge": "Toggle Easy Bridge",
+  "sunrise_tweaks.category.conveniences": "§l▌ Conveniences"
+}

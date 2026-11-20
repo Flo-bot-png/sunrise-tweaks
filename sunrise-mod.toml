@@ -1,0 +1,66 @@
+id = "sunrise_tweaks"
+name = "Sunrise Tweaks"
+version = "0.1.0"
+description = "A click menu of small client tweaks: Auto Tool, Autoclicker, Auto Eat, Fullbright, Light Overlay, Free Look, Easy Bridge and more."
+authors = ["Galaxis_Boarder"]
+# A native mod: Rust in src/, compiled by `cargo sunrise-mod build` against the game build [native] pins, beside data/ and assets/.
+side = "both"
+
+[native]
+game = "26.3"
+sunrise = "94256510f74e6843754e0a93fd9e4da7e45b1056"
+
+# Eingriffe in den Spielcode (native Route) für Module, die keine Hook-Schnittstelle haben.
+# Jeder Helfer fragt die Mod (`mod_sunrise_tweaks::…`), ob das Modul gerade an ist.
+
+# No Darkness: das pulsierende Abdunkeln des Lichts durch den Dunkelheits-Effekt.
+[[native.mixin]]
+id = "no_darkness_light"
+target = "sunrise_client::game::sculk::Game<'_>::darkness_lighting"
+kind = "RETURN"
+helper = "src/mixins/no_darkness_light.rs"
+bindings = [{ name = "value", ty = "(f32, f32)", value = "$value" }]
+
+# No Darkness: der Nebel des Dunkelheits-Effekts.
+[[native.mixin]]
+id = "no_darkness_fog"
+target = "sunrise_client::game::sculk::Game<'_>::darkness_fog"
+kind = "RETURN"
+helper = "src/mixins/no_darkness_fog.rs"
+bindings = [{ name = "value", ty = "Option<f32>", value = "$value" }]
+
+# Fullbright: das Spiel prüft jeden Tick, ob es hell zeichnen darf; mit dem Modul immer.
+[[native.mixin]]
+id = "fullbright"
+target = "sunrise_client::game::options::Game<'_>::hold_fullbright"
+kind = "HEAD"
+cancellable = true
+helper = "src/mixins/fullbright.rs"
+bindings = [{ name = "game", ty = "&mut Game<'_>", value = "&mut *self" }]
+
+# No Pumpkin Overlay: den Aufruf, der die Kamera-Overlays baut, umschließen und aus seinem
+# Ergebnis die Kürbis-Ansicht (`misc/pumpkinblur`) herausnehmen. Andere Overlays bleiben.
+[[native.mixin]]
+id = "no_pumpkin"
+target = "sunrise_client::game::render_tick::Game<'_>::screen_quads"
+kind = "WRAP_OPERATION"
+selector = "hud_overlays::camera_overlays"
+require = 1
+ordinal = 0
+helper = "src/mixins/no_pumpkin.rs"
+bindings = [
+    { name = "width", ty = "i32", value = "$arg0" },
+    { name = "height", ty = "i32", value = "$arg1" },
+    { name = "overlays", ty = "&hud_overlays::CameraOverlays", value = "$arg2" },
+    { name = "scope", ty = "&mut f32", value = "$arg3" },
+    { name = "operation", ty = "impl FnOnce(i32, i32, &hud_overlays::CameraOverlays, &mut f32) -> Vec<sunrise_client::hud_layout::GuiDraw>", value = "$operation" },
+]
+
+# Weather Changer: das Wetter, das gezeichnet wird (Regen, Himmelsfarbe, Licht, Nebel). Das
+# Spiel selbst (Felder, Mobs, Server) behält das echte Wetter.
+[[native.mixin]]
+id = "weather_view"
+target = "sunrise_client::game::pvp::Game<'_>::view_weather"
+kind = "RETURN"
+helper = "src/mixins/weather_view.rs"
+bindings = [{ name = "value", ty = "(f32, f32)", value = "$value" }]
