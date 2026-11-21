@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "A click menu of small client tweaks: Auto Tool, Autoclicker, Auto Eat, Fullbright, Light Overlay, Free Look, Easy Bridge and more."
 authors = ["Galaxis_Boarder"]
 # A native mod: Rust in src/, compiled by `cargo sunrise-mod build` against the game build [native] pins, beside data/ and assets/.
-side = "both"
+side = "client"
 
 [native]
 game = "26.3"
