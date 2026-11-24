@@ -1,0 +1,27 @@
+summary = "A click menu of small client tweaks: Auto Tool, Autoclicker, Auto Eat, Fullbright, Light Overlay, Free Look and more."
+description = """
+Press **Right Shift** to open a click menu with one panel per category. Left-click a module to turn it on or off, right-click it for its settings, and set any module's key right there.
+
+**Overlays**
+- **Light Overlay:** marks spots where mobs can spawn (red: always, yellow: only at night).
+- **Fullbright:** everything bright, even in caves and at night.
+- **No Darkness:** no dimming and no fog from the Darkness effect.
+- **No Pumpkin:** no pumpkin blur while you wear a carved pumpkin.
+- **Weather:** your own weather (clear, rain or thunder), only for you.
+
+**Automation**
+- **Auto Tool:** switches to the fastest fitting tool while you mine, and can spare tools that are almost broken.
+- **Autoclicker:** left or right, at a set CPS or whenever the attack cooldown is full.
+- **Auto Eat:** eats the best food from your hotbar when you get hungry, skipping food that poisons you.
+
+**Conveniences**
+- **Free Look:** hold a key to look around while you keep walking straight.
+- **Easy Bridge:** look down and hold right-click with a block to bridge, like in Bedrock.
+
+Client-side only. Some servers don't allow automation such as autoclickers: check a server's rules before you use them there.
+"""
+categories = ["utility", "game-mechanics"]
+
+[[screenshots]]
+path = "page/tweaks_menu.png"
+caption = "The click menu (Right Shift)"
